@@ -9,4 +9,6 @@ public class Person : BaseEntity
     public required DateOnly BirthDate { get; set; }
 
     public required int DepartmentId { get; set; }
+
+    public required Department Department { get; set; }
 }

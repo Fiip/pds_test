@@ -2,7 +2,7 @@
 
 namespace UKParliament.CodeTest.Services;
 
-public class PersonService(IRepository<Person> repository) : IPersonService
+public class PersonService(IRepository<Person> repository, IRepository<Department> departmentRepository) : IPersonService
 {
     public async Task CreateAsync(Person p)
     {
@@ -16,7 +16,14 @@ public class PersonService(IRepository<Person> repository) : IPersonService
 
     public List<Person> List()
     {
-        return repository.List();
+        var persons = repository.List();
+        var departments = departmentRepository.List();
+        foreach (var person in persons)
+        {
+            person.Department = departments.SingleOrDefault(d => d.Id == person.DepartmentId);
+        }
+
+        return persons;
     }
 
     public async Task UpdateAsync(Person p)
