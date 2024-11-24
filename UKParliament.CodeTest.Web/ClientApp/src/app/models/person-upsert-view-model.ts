@@ -1,8 +1,6 @@
-export interface PersonViewModel {
-  id: number;
+export interface PersonUpsertViewModel {
   firstName: string;
   lastName: string;
   birthDate: string;
   departmentId: number;
-  departmentName?: string;
 }

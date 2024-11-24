@@ -7,4 +7,5 @@ public class PersonViewModel
     public required string LastName { get; set; }
     public required DateOnly BirthDate { get; set; }
     public required string DepartmentId { get; set; }
+    public required string DepartmentName { get; set; }
 }

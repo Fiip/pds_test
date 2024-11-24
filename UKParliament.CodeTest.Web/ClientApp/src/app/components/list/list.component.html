@@ -1,0 +1,56 @@
+<div class="person-main-container">
+  <h2>Person Manager</h2>
+
+  <div class="person-inner-container">
+    <div>
+      <table class="persons-table">
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Birth Date</th>
+            <th>Department</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let person of persons | async">
+            <td>{{ person.firstName }}</td>
+            <td>{{ person.lastName }}</td>
+            <td>{{ person.birthDate }}</td>
+            <td>{{ person.departmentName }}</td>
+            <td>
+              <div *ngIf="!editedPerson">
+                <button (click)="edit(person)">Edit</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <div *ngIf="!editedPerson">
+                <button (click)="add()">Add</button>
+              </div>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+      <div *ngIf="(persons | async)?.length === 0" class="no-results">
+        No people found
+      </div>
+
+    </div>
+    <div>
+      <app-upsert-component *ngIf="editedPerson"
+                            [person]="editedPerson"
+                            (update)="onUpdate($event)"
+                            (create)="onCreate($event)"
+                            (cancel)="onCancel()">
+      </app-upsert-component>
+    </div>
+  </div>
+</div>
