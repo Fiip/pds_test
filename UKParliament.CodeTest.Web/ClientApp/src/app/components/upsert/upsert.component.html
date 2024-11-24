@@ -4,7 +4,7 @@
 
     <div class="form-group">
       <label>First name:</label>
-      <input type="text" formControlName="firstName">
+      <input type="text" formControlName="firstName" aria-label="First Name">
       <div class="error" *ngIf="editForm.get('firstName')?.errors?.['required'] && editForm.get('firstName')?.touched">
         First name is required
       </div>
@@ -12,7 +12,7 @@
 
     <div class="form-group">
       <label>Last name:</label>
-      <input type="text" formControlName="lastName">
+      <input type="text" formControlName="lastName" aria-label="Last Name">
       <div class="error" *ngIf="editForm.get('lastName')?.errors?.['required'] && editForm.get('lastName')?.touched">
         Last name is required
       </div>
@@ -20,8 +20,9 @@
 
 
     <div class="form-group">
-      <label>Birth Date</label>
+      <label >Birth Date</label>
       <input type="date"
+             aria-label="Birth date"
              formControlName="birthDate"
              [value]="editForm.get('birthDate')?.value | date:'yyyy-MM-dd'"
              (change)="onDateChange($event)"
@@ -33,7 +34,7 @@
 
     <div class="form-group">
       <label>ID:</label>
-      <select formControlName="departmentId">
+      <select formControlName="departmentId" aria-label="Department">
         <option *ngFor="let department of departments | async" [value]="department.id">
           {{ department.name }}
         </option>
