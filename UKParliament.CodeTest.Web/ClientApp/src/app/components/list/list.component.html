@@ -26,23 +26,14 @@
             </td>
           </tr>
         </tbody>
-        <tfoot>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-              <div *ngIf="!editedPerson">
-                <button (click)="add()">Add</button>
-              </div>
-            </td>
-          </tr>
-        </tfoot>
+
       </table>
       <div *ngIf="(persons | async)?.length === 0" class="no-results">
         No people found
       </div>
-
+      <div *ngIf="!editedPerson">
+        <button (click)="add()">Add</button>
+      </div>
     </div>
     <div>
       <app-upsert-component *ngIf="editedPerson"
