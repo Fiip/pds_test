@@ -4,6 +4,11 @@ namespace UKParliament.CodeTest.Data;
 
 public class PersonManagerContext : DbContext
 {
+    public PersonManagerContext()
+    {
+
+    }
+
     public PersonManagerContext(DbContextOptions<PersonManagerContext> options) : base(options)
     {
 
